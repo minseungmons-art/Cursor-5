@@ -1,4 +1,4 @@
-/* 기본 초기화 */
+/* 1. 기본 초기화 */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     background-color: #000;
 }
 
-/* 네비게이션 바 */
+/* 2. 네비게이션 바 디자인 */
 .navbar {
     position: fixed;
     top: 0;
@@ -33,7 +33,7 @@ body {
     font-family: 'Playfair Display', serif !important;
 }
 
-/* PC 메뉴 스타일 */
+/* PC용 메뉴 링크 */
 .nav-links {
     list-style: none;
     display: flex;
@@ -59,50 +59,44 @@ body {
     z-index: 1001;
 }
 
-/* 모바일 메뉴 (위에서 반만 내려오게) */
+/* 3. 모바일 전체화면 메뉴 (오버레이) */
 .mobile-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: auto; 
-    min-height: 350px;
-    background-color: rgba(0, 0, 0, 0.95);
+    height: 100%;
+    background-color: black;
     z-index: 9999;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    padding-top: 80px;
-    padding-bottom: 40px;
-    transform: translateY(-100%);
     opacity: 0;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
 }
 
 .mobile-overlay.active {
-    transform: translateY(0);
     opacity: 1;
+    visibility: visible;
 }
 
 .mobile-nav-links {
     list-style: none;
     text-align: center;
-    width: 100%;
 }
 
 .mobile-nav-links li {
-    margin: 30px 0;
+    margin: 40px 0;
 }
 
 .mobile-link {
     text-decoration: none;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 500;
     font-family: 'Pretendard', sans-serif;
-    display: block;
 }
 
 .close-btn {
@@ -114,7 +108,7 @@ body {
     color: white;
 }
 
-/* 배경 이미지 */
+/* 4. 배경 이미지 시스템 */
 .background-container {
     position: fixed;
     top: 0;
@@ -136,17 +130,18 @@ body {
 }
 
 .bg-image.active {
-    opacity: 0.5;
+    opacity: 0.5; /* 이미지 밝기 조절 */
 }
 
-/* 메인 콘텐츠 */
+/* 5. 메인 콘텐츠 섹션 */
 .content-container {
     position: relative;
     z-index: 1;
 }
 
+/* ★ 여기가 수정된 핵심 부분입니다! ★ */
 .scroll-section {
-    position: relative; /* 화살표 기준점 */
+    position: relative; /* 화살표의 기준점이 됩니다 */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -164,6 +159,7 @@ body {
 }
 
 .sub-text {
+    /* HTML 스타일 태그에서 폰트 적용됨 (Gowun Batang) */
     opacity: 0.9;
     margin-bottom: 40px;
 }
@@ -194,12 +190,14 @@ body {
     align-self: center; 
 }
 
+/* 아래 화살표 디자인 */
 .scroll-indicator {
-    position: absolute;
-    bottom: 40px;
+    position: absolute; /* 부모(.scroll-section) 기준으로 배치 */
+    bottom: 40px;      /* 바닥에서 40px 위 */
     font-size: 0.9rem;
     animation: bounce 2s infinite;
     opacity: 0.7;
+    cursor: default;
 }
 
 @keyframes bounce {
@@ -207,26 +205,13 @@ body {
     50% { transform: translateY(-10px); }
 }
 
-/* --- [새로 추가] 콘텐츠 내부 이미지 스타일 --- */
-.content-image {
-    width: 100%;             /* 부모 박스 너비에 맞춤 */
-    max-width: 450px;        /* PC에서 너무 커지지 않게 제한 */
-    height: auto;            /* 비율 유지 */
-    margin-top: 25px;        /* 텍스트와 간격 */
-    border-radius: 10px;     /* 모서리 둥글게 */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* 그림자 효과 */
-    display: block;
-    margin-left: auto;       /* 중앙 정렬 */
-    margin-right: auto;
-}
-
-/* 모바일 반응형 */
+/* 6. 모바일 반응형 (화면 작을 때) */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        display: none; /* PC 메뉴 숨김 */
     }
     .hamburger {
-        display: block;
+        display: block; /* 햄버거 버튼 보임 */
     }
     .main-title {
         font-size: 3rem;
