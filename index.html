@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMSTD - My Story</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <title>나의 이야기기</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     
     <style>
-        /* 한글 폰트 적용을 위한 추가 스타일 */
-        body, p, a, .sub-text, .text-box h2, .text-box p {
+        /* 기본 폰트 설정 */
+        body, p, a, .text-box h2, .text-box p {
             font-family: 'Pretendard', 'Montserrat', sans-serif !important;
         }
-        /* 메인 타이틀만 영어 폰트 유지 */
+
+        /* 환영 문구 폰트 (고운바탕) */
+        .sub-text {
+            font-family: 'Gowun Batang', serif !important;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* 메인 타이틀 폰트 (Playfair Display) */
         .main-title, .logo {
             font-family: 'Playfair Display', serif !important;
         }
@@ -37,6 +46,17 @@
         </div>
     </header>
 
+    <div class="mobile-overlay" id="mobileMenu">
+        <div class="close-btn" id="closeMenuBtn">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="mobile-link">홈</a></li>
+            <li><a href="#about" class="mobile-link">소개</a></li>
+            <li><a href="#hobby" class="mobile-link">취미</a></li>
+            <li><a href="#music" class="mobile-link">관심사</a></li>
+        </ul>
+    </div>
 
     <div class="background-container">
         <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2670&auto=format&fit=crop" alt="Coding" class="bg-image active">
@@ -44,7 +64,6 @@
         <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=2670&auto=format&fit=crop" alt="Golf" class="bg-image">
         <img src="https://images.unsplash.com/photo-1459749411177-8c47503165b5?q=80&w=2670&auto=format&fit=crop" alt="Music" class="bg-image">
     </div>
-
 
     <main class="content-container">
         
@@ -79,17 +98,17 @@
         </section>
 
         <section id="music" class="scroll-section content-section" data-bg-index="3">
-            <div class="text-box">
-               <h2>03. 관심사</h2>
-               <p>
-                   음악 듣는 것을 좋아합니다.<br>
-                   가장 좋아하는 가수는 <strong>엠씨더맥스(이수)</strong>입니다.<br>
-                   호소력 짙고 파워풀한 목소리는<br>
-                   언제 들어도 가슴을 울리고 큰 힘이 됩니다.
-               </p>
-               <img src="KakaoTalk_20260122_203010246_02.jpg" alt="" class="content-image">
-           </div>
-       </section>
+             <div class="text-box">
+                <h2>03. 관심사</h2>
+                <p>
+                    음악 듣는 것을 좋아합니다.<br>
+                    가장 좋아하는 가수는 <strong>엠씨더맥스(이수)</strong>입니다.<br>
+                    호소력 짙고 파워풀한 목소리는<br>
+                    언제 들어도 가슴을 울리고 큰 힘이 됩니다.
+                </p>
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F311%2F2019%2F10%2F25%2F0001064953_001_20191025100817668.jpg&type=sc960_832" alt="엠씨더맥스 이수" class="content-image">
+            </div>
+        </section>
 
          <section class="scroll-section content-section final-section" data-bg-index="0">
              <div class="text-box center">
@@ -100,9 +119,6 @@
 
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.36/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
