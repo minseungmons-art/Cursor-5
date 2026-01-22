@@ -1,0 +1,214 @@
+/* =========================================
+   1. 기본 설정 (폰트 및 다크 테마)
+   ========================================= */
+:root {
+    --text-color: #ffffff;      /* 기본 글자색: 흰색 */
+    --accent-color: #00e5ff;    /* 포인트 색상: 형광 하늘색 (Cyan) */
+    --box-bg: rgba(0, 0, 0, 0.7); /* 글상자 배경: 반투명 검정 */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #111; /* 아주 어두운 회색 */
+    color: var(--text-color);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+
+/* =========================================
+   2. 네비게이션 바 (상단 메뉴)
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.8); /* 반투명 검정 */
+    backdrop-filter: blur(10px);    /* 배경 흐림 효과 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #ccc;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--accent-color); /* 마우스 올리면 형광색 */
+}
+
+.hamburger {
+    display: none; /* PC에서는 안 보임 */
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* =========================================
+   3. 배경 이미지 (고정된 배경)
+   ========================================= */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 화면 꽉 차게 */
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* 부드럽게 전환 */
+    filter: brightness(0.6); /* 글씨 잘 보이게 사진 어둡게 처리 */
+}
+
+.bg-image.active {
+    opacity: 1;
+}
+
+/* =========================================
+   4. 컨텐츠 영역
+   ========================================= */
+.content-container {
+    position: relative;
+    z-index: 1;
+}
+
+.scroll-section {
+    min-height: 100vh; /* 화면 하나 꽉 차게 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10vw;
+}
+
+/* 첫 화면 (Hello, I am Dev) 스타일 */
+.header-section {
+    align-items: flex-start; /* 왼쪽 정렬 */
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 8rem); /* 반응형 폰트 크기 */
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 20px;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.sub-text {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    font-weight: 300;
+    margin-left: 5px;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+}
+
+/* 설명 글상자 스타일 */
+.text-box {
+    max-width: 600px;
+    background: var(--box-bg);
+    padding: 40px;
+    border-radius: 5px;
+    border-left: 5px solid var(--accent-color); /* 왼쪽 형광줄 */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.text-box h2 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.text-box p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #eee;
+}
+
+/* 위치 정렬용 클래스 */
+.align-right {
+    margin-left: auto; /* 오른쪽으로 밀기 */
+}
+.center {
+    margin: auto;
+    text-align: center;
+    border-left: none;
+    border-top: 5px solid var(--accent-color); /* 중앙 정렬은 위쪽에 형광줄 */
+}
+
+/* =========================================
+   5. 모바일 반응형
+   ========================================= */
+@media (max-width: 768px) {
+    .navbar { padding: 0 20px; }
+    .hamburger { display: block; }
+
+    .nav-links {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        align-items: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.5s;
+    }
+    .nav-links.active { max-height: 300px; padding: 20px 0; }
+    .nav-links li { margin: 15px 0; }
+    
+    .text-box { padding: 25px; }
+    .main-title { font-size: 3.5rem; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -10px); }
+}
