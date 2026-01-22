@@ -1,4 +1,4 @@
-/* 기본 초기화 */
+/* 1. 기본 초기화 */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     background-color: #000;
 }
 
-/* 네비게이션 바 */
+/* 2. 네비게이션 바 디자인 */
 .navbar {
     position: fixed;
     top: 0;
@@ -29,10 +29,11 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     letter-spacing: 1px;
-    z-index: 1001; /* 메뉴보다 위에 있게 */
+    z-index: 1001;
+    font-family: 'Playfair Display', serif !important;
 }
 
-/* PC 메뉴 스타일 */
+/* PC용 메뉴 링크 */
 .nav-links {
     list-style: none;
     display: flex;
@@ -58,14 +59,14 @@ body {
     z-index: 1001;
 }
 
-/* ★ [새로 추가] 모바일 메뉴 오버레이 스타일 (사진과 동일하게) ★ */
+/* 3. 모바일 전체화면 메뉴 (오버레이) */
 .mobile-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black; /* 완전 검은 배경 */
+    background-color: black;
     z-index: 9999;
     display: flex;
     flex-direction: column;
@@ -76,7 +77,6 @@ body {
     transition: opacity 0.3s ease, visibility 0.3s;
 }
 
-/* 메뉴가 열렸을 때 */
 .mobile-overlay.active {
     opacity: 1;
     visibility: visible;
@@ -88,13 +88,13 @@ body {
 }
 
 .mobile-nav-links li {
-    margin: 40px 0; /* 메뉴 간격 넓게 */
+    margin: 40px 0;
 }
 
 .mobile-link {
     text-decoration: none;
     color: white;
-    font-size: 1.2rem; /* 글씨 크기 */
+    font-size: 1.5rem;
     font-weight: 500;
     font-family: 'Pretendard', sans-serif;
 }
@@ -108,8 +108,7 @@ body {
     color: white;
 }
 
-
-/* 배경 이미지 */
+/* 4. 배경 이미지 시스템 */
 .background-container {
     position: fixed;
     top: 0;
@@ -131,16 +130,18 @@ body {
 }
 
 .bg-image.active {
-    opacity: 0.5;
+    opacity: 0.5; /* 이미지 밝기 조절 */
 }
 
-/* 메인 콘텐츠 */
+/* 5. 메인 콘텐츠 섹션 */
 .content-container {
     position: relative;
     z-index: 1;
 }
 
+/* ★ 여기가 수정된 핵심 부분입니다! ★ */
 .scroll-section {
+    position: relative; /* 화살표의 기준점이 됩니다 */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -154,10 +155,11 @@ body {
     font-size: 4rem;
     line-height: 1.1;
     margin-bottom: 20px;
+    font-family: 'Playfair Display', serif !important;
 }
 
 .sub-text {
-    /* HTML에서 폰트 설정됨 */
+    /* HTML 스타일 태그에서 폰트 적용됨 (Gowun Batang) */
     opacity: 0.9;
     margin-bottom: 40px;
 }
@@ -188,11 +190,14 @@ body {
     align-self: center; 
 }
 
+/* 아래 화살표 디자인 */
 .scroll-indicator {
-    position: absolute;
-    bottom: 40px;
+    position: absolute; /* 부모(.scroll-section) 기준으로 배치 */
+    bottom: 40px;      /* 바닥에서 40px 위 */
+    font-size: 0.9rem;
     animation: bounce 2s infinite;
     opacity: 0.7;
+    cursor: default;
 }
 
 @keyframes bounce {
@@ -200,7 +205,7 @@ body {
     50% { transform: translateY(-10px); }
 }
 
-/* 모바일 반응형 */
+/* 6. 모바일 반응형 (화면 작을 때) */
 @media (max-width: 768px) {
     .nav-links {
         display: none; /* PC 메뉴 숨김 */
